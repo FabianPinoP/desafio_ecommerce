@@ -8,6 +8,14 @@ class Order < ApplicationRecord
   has_many :payments
 
   validates :number, uniqueness: true
+  
+  def total_in_cents
+    total * 100
+  end
+  
+  def _set_state_completed
+    update_attributes(state: "completed"
+  end
 
   def generate_number(size)
     self.number ||= loop do
