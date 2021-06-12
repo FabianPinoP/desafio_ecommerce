@@ -6,7 +6,7 @@ class Payment < ApplicationRecord
     PaymentMethod.find_by(code: "PEC")
   end
 
-  def self.start_payment_process(order, token)
+  def self.start_payment_process(order, payment_method, token)
     Payment.create(
       order_id: order.id,
       payment_method_id: payment_method.id,
@@ -17,7 +17,7 @@ class Payment < ApplicationRecord
   end
 
   def set_state_completed
-    update_attributes(state: "completed"
+    update_attributes(state: "completed")
   end
   
   def finish_payment
@@ -26,4 +26,5 @@ class Payment < ApplicationRecord
       order.set_state_completed
     end
   end
+ 
 end

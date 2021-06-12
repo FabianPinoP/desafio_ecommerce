@@ -13,8 +13,8 @@ class Order < ApplicationRecord
     total * 100
   end
   
-  def _set_state_completed
-    update_attributes(state: "completed"
+  def set_state_completed
+    update_attributes(state: "completed")
   end
 
   def generate_number(size)

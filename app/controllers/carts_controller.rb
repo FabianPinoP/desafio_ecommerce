@@ -39,6 +39,9 @@ class CartsController < ApplicationController
       payment.finish_payment
     end
   end
+
+  private 
+
   def set_order
     @order = Order.find(params[:cart][:order_id])
   end
