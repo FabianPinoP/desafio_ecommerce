@@ -17,7 +17,7 @@ class Payment < ApplicationRecord
   end
 
   def set_state_completed
-    update_attributes(state: "completed")
+    update_attribute(state: "completed")
   end
   
   def finish_payment

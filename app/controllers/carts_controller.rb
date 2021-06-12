@@ -40,17 +40,14 @@ class CartsController < ApplicationController
     end
   end
 
-  private 
-
-  def set_order
-    @order = Order.find(params[:cart][:order_id])
-  end
   def paypal_order_total
     @details.params["order_total"].to_d * 100
   end
+
   def params_token
     params[:token]
   end
+  
   def express_purchase_options
     {
       ip: request.remote_ip,
@@ -59,4 +56,11 @@ class CartsController < ApplicationController
       currency: "USD"
     }
   end
+
+  private 
+
+  def set_order
+    @order = Order.find(params[:cart][:order_id])
+  end
+ 
 end
