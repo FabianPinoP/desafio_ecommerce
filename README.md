@@ -1,24 +1,25 @@
-# README
+Crear lista de productos
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+si usted desea solo mostrar los productos con stock positivo usar el metodo visible_on_catalog?, que esta ubicado en product.rb el metodo funciona de la 
+siguiente manera 
 
-Things you may want to cover:
+def visible_on_catalog? <- nombre del metodo
+    self.variants.each do |variants| <- esta linea buscara en la columna stock los productos 
+      if variant.stock >0            <- esta linea toma los productos con stock mayor a 0
+        return true                  <- si el producto encontrado tiene stock lo mostrara
+      else
+        false                        <- de lo contrario no lo mostrara
+      end
+    end
+  end
 
-* Ruby version
+para usar correctamente este metodo reemplazar un parte del codigo en el archivo products_controller.rb en la linea 7
 
-* System dependencies
+def index
+    @products = Product.all <- muestra todos los productos no discrimina el stock
+end                     ----<- para usar el metodo solo cambiar .all por el nombre del
+                               metodo quedando de la siguiente forma
 
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+def index
+  @products = Product.visible_on_catalog?
+end
