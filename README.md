@@ -4,6 +4,7 @@ si usted desea solo mostrar los productos con stock positivo usar el metodo visi
 siguiente manera 
 
 def visible_on_catalog? <- nombre del metodo
+
     self.variants.each do |variants| <- esta linea buscara en la columna stock los productos 
       if variant.stock >0            <- esta linea toma los productos con stock mayor a 0
         return true                  <- si el producto encontrado tiene stock lo mostrara
@@ -11,15 +12,18 @@ def visible_on_catalog? <- nombre del metodo
         false                        <- de lo contrario no lo mostrara
       end
     end
-  end
+end
 
 para usar correctamente este metodo reemplazar un parte del codigo en el archivo products_controller.rb en la linea 7
 
 def index
+
     @products = Product.all <- muestra todos los productos no discrimina el stock
 end                     ----<- para usar el metodo solo cambiar .all por el nombre del
                                metodo quedando de la siguiente forma
 
 def index
+
   @products = Product.visible_on_catalog?
+  
 end
