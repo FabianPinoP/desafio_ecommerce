@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe Category, type: :model do
+RSpec.describe Payment, type: :model do
   
     it 'order creates a payment' do
         user = User.create(email: "user@example.com", password: "1234567")
